@@ -151,6 +151,9 @@ parse_utc_time (const gchar * str, GstRTSPTime * time, GstRTSPTime2 * time2,
   if (str[0] == '\0') {
     time->type = GST_RTSP_TIME_END;
     return GST_RTSP_OK;
+  } else if (g_str_has_prefix(str, "now")) {
+    time->type = GST_RTSP_TIME_NOW;
+    return GST_RTSP_OK;
   } else {
     gint year, month, day;
     gint hours, mins;
